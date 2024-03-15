@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --animation-speed: 2.5s; /* Default speed */
+}
+
 .custom-input {
-  @apply p-2 w-full border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50;
+  @apply p-2 border border-gray-300 rounded-md w-full focus:border-gray-200 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition duration-300;
 }
 
 @keyframes waveAnimation {
@@ -15,6 +19,51 @@
   }
 }
 
+@keyframes dynamicWaveAnimation {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(-1px, -1px) scale(1.02);
+    opacity: 0.95;
+  }
+  50% {
+    transform: translate(1px, -2px) scale(1.04);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate(-1px, -1px) scale(1.02);
+    opacity: 0.95;
+  }
+}
+
+@keyframes toggleBg {
+  0% {
+    background-color: #f3f3f3;
+  }
+  50% {
+    background-color: #e0e0e0;
+  }
+  100% {
+    background-color: #f3f3f3;
+  }
+}
+
+@keyframes dotTransform {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+
 .search-input {
   @apply bg-white text-gray-800 border border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-300;
 }
@@ -22,3 +71,4 @@
 .search-button {
   @apply ml-2 bg-navyBlue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300;
 }
+
